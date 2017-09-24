@@ -186,8 +186,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
 		case "faq-ques":
 		console.log('GOT INTO THE ISDEFINED Outside IF');
-		//if(isDefined(contexts[0]) && contexts[0].name == 'answer-resp-yes' && contexts[0].parameters)
-		//{
+		if(isDefined(contexts[0]) && contexts[0].name == 'answer-req' && contexts[0].parameters)
+		{
 			console.log('GOT INTO THE ISDEFINED IF');
 			console.log("Context0 = "+contexts[0]);
 			console.log("Context0 = "+contexts[0].name);
@@ -201,7 +201,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  let emailContent = 'A user just sent- '+question;
 				  sendEmail('New job application',emailContent);
 			  }
-	//	}
+		}
 		sendTextMessage(sender,responseText);
 		break;
 		case "degree-enquiry":
@@ -904,8 +904,8 @@ function sendEmail(subject, content){
        const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey('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');
 const msg = {
-  to: 'b.alleyne.sa@gmail.com',
-  from: 'b.alleyne.sa@gmail.com',
+  to: config.EMAIL_TO,
+  from: config.EMAIL_FROM,
   subject: subject,
   text: content,
 };
