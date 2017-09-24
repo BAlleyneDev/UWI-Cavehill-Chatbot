@@ -896,10 +896,10 @@ function verifyRequestSignature(req, res, buf) {
 
 function sendEmail(subject, content){
        const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey('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');
 const msg = {
-  to: config.EMAIL_TO,
-  from: config.EMAIL_FROM,
+  to: 'b.alleyne.sa@gmail.com',
+  from: 'b.alleyne.sa@gmail.com',
   subject: subject,
   text: content,
 };
