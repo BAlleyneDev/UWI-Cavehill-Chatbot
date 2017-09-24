@@ -185,14 +185,8 @@ function handleEcho(messageId, appId, metadata) {
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
 		case "faq-ques":
-		console.log('GOT INTO THE ISDEFINED Outside IF');
-		if(isDefined(contexts[0]) && contexts[0].name == 'answer-req' && contexts[0].parameters)
+		if(isDefined(contexts[0]) && contexts[0].name == 'DefaultFallbackIntent' && contexts[0].parameters)
 		{
-			console.log('GOT INTO THE ISDEFINED IF');
-			console.log("Context0 = "+contexts[0]);
-			console.log("Context0 = "+contexts[0].name);
-			console.log("Context0 = "+contexts[0].parameters);
-
               let question = (isDefined(contexts[0].parameters['question']) 
 			  && contexts[0].parameters['question']!='') ? contexts[0].parameters['question']:'';
 
