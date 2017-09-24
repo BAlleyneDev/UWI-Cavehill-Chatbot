@@ -187,6 +187,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "faq-ques":
 		if(isDefined(contexts[0]) && contexts[0].name == 'answer-resp-yes' && contexts[0].parameters)
 		{
+			console.log('GOT INTO THE ISDEFINED IF');
               let question = (isDefined(contexts[0].parameters['question']) 
 			  && contexts[0].parameters['question']!='') ? contexts[0].parameters['question']:'';
 
