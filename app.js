@@ -184,6 +184,20 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
+		case "faq-ques":
+		if(isDefined(contexts[0]) && contexts[0].name == 'answer-resp-yes' && contexts[0].parameters)
+		{
+              let question = (isDefined(contexts[0].parameters['question']) 
+			  && contexts[0].parameters['question']!='') ? contexts[0].parameters['question']:'';
+
+			  if(question != '')
+			  {
+				  let emailContent = 'A user just sent- '+question;
+				  sendEmail('New job application',emailContent);
+			  }
+		}
+		sendTextMessage(sender,responseText);
+		break;
 		case "degree-enquiry":
 		let replies =[
 			{
@@ -878,6 +892,18 @@ function verifyRequestSignature(req, res, buf) {
 			throw new Error("Couldn't validate the request signature.");
 		}
 	}
+}
+
+function sendEmail(subject, content){
+       const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const msg = {
+  to: config.EMAIL_TO,
+  from: config.EMAIL_FROM,
+  subject: subject,
+  text: content,
+};
+sgMail.send(msg); 
 }
 
 function isDefined(obj) {

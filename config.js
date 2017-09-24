@@ -4,4 +4,6 @@ module.exports = {
     API_AI_CLIENT_ACCESS_TOKEN: 'c7179fe6758a408f9e0ea70437848f76',
     FB_APP_SECRET: 'dde725c32e22cdb16327b0ace2f688c4',
     SERVER_URL: "https://uwicavehillchatbot.herokuapp.com/",
+    EMAIL_FROM:'b.alleyne.sa@gmail.com',
+    EMAIL_TO:'b.alleyne.sa@gmail.com'
 };
