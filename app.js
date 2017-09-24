@@ -184,9 +184,13 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
+		
 		case "faq-ques":
+		console.log('BEFORE IF');
 		if(isDefined(contexts[0]) && contexts[0].name == 'DefaultFallbackIntent' && contexts[0].parameters)
 		{
+			console.log('After IF');
+			console.log('Context NAME'+contxts[0].name);
               let question = (isDefined(contexts[0].parameters['question']) 
 			  && contexts[0].parameters['question']!='') ? contexts[0].parameters['question']:'';
 
