@@ -188,7 +188,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		case "faq-ques":
 		console.log('BEFORE IF');
 		console.log('Context NAME: '+contexts[0].name);
-		if(isDefined(contexts[0]) && contexts[0].name == 'DefaultFallbackIntent' && contexts[0].parameters)
+		if(isDefined(contexts[0]) && contexts[0].name == 'answer-req' && contexts[0].parameters)
 		{
 			console.log('After IF');
 			console.log('Context NAME'+contxts[0].name);
