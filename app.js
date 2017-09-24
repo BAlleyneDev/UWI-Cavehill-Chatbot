@@ -191,11 +191,16 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		if(isDefined(contexts[0]) && contexts[0].name == 'answer-req' && contexts[0].parameters)
 		{
 			console.log('After IF');
-              let question = (isDefined(contexts[0].parameters['question']) 
-			  && contexts[0].parameters['question']!='') ? contexts[0].parameters['question']:'';
+              let question = (isDefined(contexts[0].parameters['question-words']) 
+			  && contexts[0].parameters['question-words']!='') ? contexts[0].parameters['question-words']:'';
+              console.log('Question initalisation');
+			  console.log('Question = '+question);
+			  console.log('Parameters'+contexts[0].parameters['question-words']);
+
 
 			  if(question != '')
 			  {
+				  console.log('Pass to question if');
 				  let emailContent = 'A user just sent- '+question;
 				  sendEmail('New job application',emailContent);
 			  }
@@ -899,6 +904,7 @@ function verifyRequestSignature(req, res, buf) {
 }
 
 function sendEmail(subject, content){
+	console.log('Reached the mail function');
        const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey('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');
 const msg = {
