@@ -185,6 +185,7 @@ function handleEcho(messageId, appId, metadata) {
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
 		case "faq-ques":
+		console.log('GOT INTO THE ISDEFINED Outside IF');
 		if(isDefined(contexts[0]) && contexts[0].name == 'answer-resp-yes' && contexts[0].parameters)
 		{
 			console.log('GOT INTO THE ISDEFINED IF');
