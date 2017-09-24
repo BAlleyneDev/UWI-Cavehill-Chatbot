@@ -191,7 +191,6 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		if(isDefined(contexts[0]) && contexts[0].name == 'answer-req' && contexts[0].parameters)
 		{
 			console.log('After IF');
-			console.log('Context NAME'+contxts[0].name);
               let question = (isDefined(contexts[0].parameters['question']) 
 			  && contexts[0].parameters['question']!='') ? contexts[0].parameters['question']:'';
 
