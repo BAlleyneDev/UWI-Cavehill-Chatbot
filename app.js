@@ -193,15 +193,15 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			console.log('After IF');
               let question = (isDefined(contexts[0].parameters['question-words']) 
 			  && contexts[0].parameters['question-words']!='') ? contexts[0].parameters['question-words']:'';
-              console.log('Question initalisation');
-			  console.log('Question = '+question);
-			  console.log('Parameters'+contexts[0].parameters['question-words']);
+              
+			  let questionbody = (isDefined(contexts[0].parameters['question-body'])
+			  && contexts[0].parameters['question-body']!='') ? contexts[0].parameters['question-body']:'';
 
 
 			  if(question != '')
 			  {
 				  console.log('Pass to question if');
-				  let emailContent = 'A user just sent- '+question;
+				  let emailContent = 'A user just sent- '+question + " " + questionbody;
 				  sendEmail('New job application',emailContent);
 			  }
 		}
