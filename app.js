@@ -770,6 +770,17 @@ function receivedPostback(event) {
 	var payload = event.postback.payload;
 
 	switch (payload) {
+	    case 'DEG_COURSES':
+		    sendToApiAi(senderID, "courses for");
+		break;
+
+		case 'TIPS':
+		    sendToApiAi(senderID, "tips");
+		break;
+
+		case 'GET_STARTED':
+		    sendToApiAi(senderID, "start me out");
+		break;
 		default:
 			//unindentified payload
 			sendTextMessage(senderID, "I'm not sure what you want. Can you be more specific?");
