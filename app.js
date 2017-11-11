@@ -183,6 +183,7 @@ function handleEcho(messageId, appId, metadata) {
 }
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
+	console.log("Checking action");
 	switch (action) {
 		case "getBuildingLocation":
 		   console.log("OUT");
