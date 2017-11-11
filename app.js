@@ -184,7 +184,45 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
-		
+		case get-building-location:
+		   console.log("OUT");
+		   if (parameters.hasOwnProperty("campus-places") && parameters["campus-places"] != "")
+		   {
+			   console.log("IN");
+			     var request = require('request');
+							request({
+						uri: 'https://maps.googleapis.com/maps/api/js?key='+'AIzaSyCLoCC07tWYjgQgrXXptv76p0wazqA8ZzQ'+'&callback=initMap',
+						qs: {
+							appid:AIzaSyCLoCC07tWYjgQgrXXptv76p0wazqA8ZzQ,
+							q: parameters["campus-places"]
+						}
+
+					}, function (error, response, body) {
+						if (!error && response.statusCode == 200) {
+
+							var uluru = {lat: -25.363, lng: 131.044};
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 4,
+                            center: uluru
+                             });
+                            var marker = new google.maps.Marker({
+                            position: uluru,
+                           map: map
+                          });
+
+						  sendImageMessage(sender,map);
+						} else {
+							console.error(response.error);
+						}
+
+					});
+		   }
+		   else
+		   {
+			   sendTextMessage(sender, responseText);
+		   }
+		break;
+
 		case "faq-ques":
 		console.log('BEFORE IF');
 		console.log('Context NAME: '+contexts[0].name);
