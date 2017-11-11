@@ -194,7 +194,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							request({
 						uri: 'https://maps.googleapis.com/maps/api/js?key='+'AIzaSyCLoCC07tWYjgQgrXXptv76p0wazqA8ZzQ'+'&callback=initMap',
 						qs: {
-							appid:AIzaSyCLoCC07tWYjgQgrXXptv76p0wazqA8ZzQ,
+							appid:"AIzaSyCLoCC07tWYjgQgrXXptv76p0wazqA8ZzQ",
 							q: parameters["campus-places"]
 						}
 
