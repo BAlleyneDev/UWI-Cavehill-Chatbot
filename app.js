@@ -184,7 +184,7 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
-		case get-building-location:
+		case "getBuildingLocation":
 		   console.log("OUT");
 		   if (parameters.hasOwnProperty("campus-places") && parameters["campus-places"] != "")
 		   {
