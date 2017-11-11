@@ -707,7 +707,7 @@ function greetUserText(userId) {
 				console.log("FB user: %s %s, %s",
 					user.first_name, user.last_name, user.gender);
 
-				sendTextMessage(userId, "Hello " + user.first_name + ' :). Welcome to the UWI Cavehill Bot. I can answer questions such as\n What time does CMP Building close?\n How do I log into elearning?\n' 
+				sendTextMessage(userId, "Hello " + user.first_name + ' :). Welcome to the UWI Cavehill Bot. I can answer questions such as:\n What time does CMP Building close?\n How do I log into elearning?\n' 
 				+' What can I help you with?');
 			} else {
 				console.log("Cannot get data for fb user with id",
