@@ -707,7 +707,8 @@ function greetUserText(userId) {
 				console.log("FB user: %s %s, %s",
 					user.first_name, user.last_name, user.gender);
 
-				sendTextMessage(userId, "Welcome " + user.first_name + '!');
+				sendTextMessage(userId, "Hello " + user.first_name + ':) Welcome to the UWI Cavehill Bot. I can answer questions about the university that you might have.' 
+				+'What can I help you with?');
 			} else {
 				console.log("Cannot get data for fb user with id",
 					userId);
@@ -779,7 +780,7 @@ function receivedPostback(event) {
 		break;
 
 		case 'GET_STARTED':
-		    sendToApiAi(senderID, "start me out");
+		    greetUserText(senderID);
 		break;
 		default:
 			//unindentified payload
