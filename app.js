@@ -185,7 +185,7 @@ function handleEcho(messageId, appId, metadata) {
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	console.log("Checking action");
 	switch (action) {
-		case "getBuildingLocation":
+		/*case "getBuildingLocation":
 		   console.log("OUT");
 		   if (parameters.hasOwnProperty("campus-places") && parameters["campus-places"] != "")
 		   {
@@ -224,6 +224,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			   sendTextMessage(sender, responseText);
 		   }
 		break;
+*/
 
 		case "faq-ques":
 		console.log('BEFORE IF');
