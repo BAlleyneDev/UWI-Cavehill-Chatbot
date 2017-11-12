@@ -132,10 +132,12 @@ function setSessionAndUser(senderID){
    if (!sessionIds.has(senderID)) {
 		sessionIds.set(senderID, uuid.v1());
 	}
-
+console.log('ENTERING USER MAP SET');
 	if(!usersMap.has(senderID)){
+		console.log('ENTERed USER MAP SET');
 		userData(function(user){
 			usersMap.set(senderID, user);
+			console.log('SET USER MAP '+ user);
 		},senderID);
 	}
 }
