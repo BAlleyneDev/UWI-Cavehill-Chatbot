@@ -1,6 +1,6 @@
 'user strict';
 const request = require('request');
-const config = require('.config');
+const config = require('./config');
 const pg = require('pg');
 
 pg.defaults.ssl = true;
@@ -57,7 +57,7 @@ module.exports = function(callback, userId){
 
 					});
 					pool.end();
-                    				
+
 			} else {
 				console.log("Cannot get data for fb user with id",
 					userId);
