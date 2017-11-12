@@ -760,6 +760,7 @@ function sendAccountLinking(recipientId) {
 
 function greetUserText(userId) {
     console.log("USERID:"+userId);
+	setSessionAndUser(userID);
 	let user = usersMap.get(userId);
 
     console.log("USER MAP INFO "+user);
