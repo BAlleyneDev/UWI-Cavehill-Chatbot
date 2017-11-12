@@ -6,6 +6,7 @@ const pg = require('pg');
 pg.defaults.ssl = true;
 
 module.exports = function(callback, userId){
+    console.log("ENTERED USER.JS");
     request({
 		uri: 'https://graph.facebook.com/v2.7/' + userId,
 		qs: {
@@ -51,7 +52,7 @@ module.exports = function(callback, userId){
 									}
                                     console.log("SUCCESSFULLY PASSED QUERY")
 								}
-
+                                console.log(user);
                                 callback(user);
 							});
 

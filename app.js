@@ -759,7 +759,7 @@ function sendAccountLinking(recipientId) {
 
 
 function greetUserText(userId) {
-
+    console.log("USERID:"+userId);
 	let user = usersMap.get(userId);
 
     console.log("USER MAP INFO "+user);
@@ -833,6 +833,8 @@ function receivedPostback(event) {
 		break;
 
 		case 'GET_STARTED':
+		    console.log("INSIDE OF GET STARTED");
+			console.log("SENDERid = "+senderID);
 		    greetUserText(senderID);
 		break;
 		default:
