@@ -19,7 +19,7 @@ module.exports = function(callback, userId){
 
 			if (user.first_name) {
 
-
+                    console.log("USER FIRST NAME OBTAINED");
 					var pool = new pg.Pool(config.PG_CONFIG);
 					pool.connect(function(err, client, done) {
 						if (err) {
@@ -49,10 +49,11 @@ module.exports = function(callback, userId){
 												user.gender
 											]);
 									}
+                                    console.log("SUCCESSFULLY PASSED QUERY")
 								}
-                                done();
+                             /*   done();
 
-                                callback(user);
+                                callback(user);*/
 							});
 
 					});
