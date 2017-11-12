@@ -760,13 +760,13 @@ function sendAccountLinking(recipientId) {
 
 function greetUserText(userId) {
     console.log("USERID:"+userId);
-	setSessionAndUser(userID);
+	setSessionAndUser(userId);
 	let user = usersMap.get(userId);
 
     console.log("USER MAP INFO "+user);
 	if(user == undefined)
 	{
-		setSessionAndUser(userID);
+		setSessionAndUser(userId);
 	}
     sendTextMessage(userId, "Hello " + user.first_name + ' :). Welcome to the UWI Cavehill Bot. I can answer questions such as:\n What time does CMP Building close?\n How do I log into elearning?\n' 
 				+' What can I help you with?');
