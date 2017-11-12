@@ -11,6 +11,7 @@ const app = express();
 const uuid = require('uuid');
 const userData = require('./user');
 
+
 pg.defaults.ssl = true;
 
 // Messenger API parameters
@@ -135,9 +136,14 @@ function setSessionAndUser(senderID){
 console.log('ENTERING USER MAP SET');
 	if(!usersMap.has(senderID)){
 		console.log('ENTERed USER MAP SET');
+		userData(user=>{
+		  console.log('SENDER '+senderID + '1USER = ' + user);
+          usersMap.set(senderID, user);
+		},senderID);
+
 		userData(function(user){
 			//usersMap.set(senderID, user);
-			console.log('SENDER '+senderID + 'USER = ' + user);
+			console.log('SENDER '+senderID + '2USER = ' + user);
 			usersMap.set(senderID, user);
 			console.log('SET USER MAP '+ user);
 		},senderID);
