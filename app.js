@@ -141,12 +141,13 @@ console.log('ENTERING USER MAP SET');
           usersMap.set(senderID, user);
 		},senderID);
 
-		userData(function(user){
+		/*userData(function(user){
 			//usersMap.set(senderID, user);
 			console.log('SENDER '+senderID + '2USER = ' + user);
 			usersMap.set(senderID, user);
 			console.log('SET USER MAP '+ user);
 		},senderID);
+		*/
 	}
 }
 
