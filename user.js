@@ -51,9 +51,9 @@ module.exports = function(callback, userId){
 									}
                                     console.log("SUCCESSFULLY PASSED QUERY")
 								}
-                             /*   done();
+                                done();
 
-                                callback(user);*/
+                                callback(user);
 							});
 
 					});

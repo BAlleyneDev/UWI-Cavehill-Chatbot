@@ -136,6 +136,8 @@ console.log('ENTERING USER MAP SET');
 	if(!usersMap.has(senderID)){
 		console.log('ENTERed USER MAP SET');
 		userData(function(user){
+			//usersMap.set(senderID, user);
+			console.log('SENDER '+senderID + 'USER = ' + user);
 			usersMap.set(senderID, user);
 			console.log('SET USER MAP '+ user);
 		},senderID);
