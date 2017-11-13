@@ -10,9 +10,9 @@ const pg = require('pg');
 const app = express();
 const uuid = require('uuid');
 const userData = require('./user');
-const degrees = require('./degrees');
+/*const degrees = require('./degrees');
 const courses = require('./courses');
-
+*/
 
 pg.defaults.ssl = true;
 
@@ -255,13 +255,25 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		break;
 */
         case "deg-courses":
-		  courses.readAllCourses(function(alldegrees){
+		//  courses.readAllCourses(function(alldegrees){
 			  console.log("Degrees:"+alldegrees);
+			  var pool = new pg.Pool(config.PG_CONFIG);
+			  pool.connect(function(err, client, done){
+				  if (err){
+					  return console.error('Error acquiring client');
+				  }
+				  var rows = [];
+				  var query = client.query(`SELECT courses FROM compsci_courses`);
+			  })
 			  let allcoursesString = alldegrees.join(', ');
-			  let reply = `The courses available for computer science are ${allcoursesString}. What is your degree?`;
+			  query.on("row", function(row,result){
+				    let results = result.addRow(row);
+                    let reply = `The courses available for computer science are ${results}. What is your degree?`;
+			  });
+			  
 
 			  sendTextMessage(sender, reply);
-		  });
+		//  });
 		break;
 
 		case "faq-ques":
