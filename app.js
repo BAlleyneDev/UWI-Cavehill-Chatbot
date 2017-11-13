@@ -266,6 +266,11 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  var query = client.query(`SELECT course FROM compsci_courses`,
 				  function(err, result) {
 					    var value = JSON.stringify(result.rows);
+						value.foreach(function(val){
+							console.log(val.value);
+						}) 
+
+						
                         console.log('ARRAY VAL='+value[3]);
                         let reply = `The courses available for computer science are ${value[2].course}. What is your degree?`;
 					  sendTextMessage(sender, reply);
