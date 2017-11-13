@@ -266,12 +266,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  var query = client.query(`SELECT course FROM compsci_courses`);
 
 
-				  			  query.on("row", function(row,result){
-				    let results = result.addRow(row);
+				//  	query.on("row", function(row,result){
+				    let results = query.join(',');
                     let reply = `The courses available for computer science are ${results}. What is your degree?`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
-			  });
+			//  });
 			  })
 			  //let allcoursesString = alldegrees.join(', ');
 
