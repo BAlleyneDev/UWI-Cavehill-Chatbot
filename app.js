@@ -256,6 +256,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 */
         case "deg-courses":
 		  courses.readAllCourses(function(alldegrees){
+			  console.log("Degrees:"+alldegrees);
 			  let allcoursesString = alldegrees.join(', ');
 			  let reply = `The courses available for computer science are ${allcoursesString}. What is your degree?`;
 

@@ -27,7 +27,7 @@ module.exports = {
                             callback(courses);
                         };
                     });
-            done();
+        
         });
         pool.end();
     }
