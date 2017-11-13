@@ -10,6 +10,8 @@ const pg = require('pg');
 const app = express();
 const uuid = require('uuid');
 const userData = require('./user');
+const degrees = require('./degrees');
+const courses = require('./courses');
 
 
 pg.defaults.ssl = true;
@@ -252,6 +254,14 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		   }
 		break;
 */
+        case "deg-courses":
+		  courses.readAllCourses(function(alldegrees){
+			  let allcoursesString = alldegrees.join(', ');
+			  let reply = `The courses available for computer science are ${allcoursesString}. What is your degree?`;
+
+			  sendTextMessage(sender, reply);
+		  });
+		break;
 
 		case "faq-ques":
 		console.log('BEFORE IF');
