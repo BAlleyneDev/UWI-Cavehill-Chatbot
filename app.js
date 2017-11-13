@@ -267,17 +267,14 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  function(err, result) {
 					    var value = JSON.stringify(result.rows);
 						let courses = [];
-						let coursesSEC= [];
+						
 						for (let i=0; i<result.rows.length; i++)
 						{
                            courses.push(result.rows[i]['course']);
 						}
-						for (let i=0; i<value.rows.length; i++)
-						{
-                           coursesSEC.push(result.rows[i]['course']);
-						}
+						
                        console.log('Array 1: '+courses);
-					   console.log('Array 2: '+coursesSEC);
+					   
 						
                         console.log('ARRAY VAL='+value[3]);
                         let reply = `The courses available for computer science are ${courses}. What is your degree?`;
