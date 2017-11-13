@@ -272,10 +272,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							s=s+value[i];
 							
 						}
-                       console.log(s);
+                       console.log('Array: '+s);
 						
                         console.log('ARRAY VAL='+value[3]);
-                        let reply = `The courses available for computer science are ${value[2].course}. What is your degree?`;
+                        let reply = `The courses available for computer science are ${s.value}. What is your degree?`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
