@@ -263,14 +263,18 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					  return console.error('Error acquiring client');
 				  }
 				  var rows = [];
-				  var query = client.query(`SELECT course FROM compsci_courses`);
+				  var query = client.query(`SELECT course FROM compsci_courses`,
+				  function(err, result) {
+                        let reply = `The courses available for computer science are ${result}. What is your degree?`;
+					  sendTextMessage(sender, reply);
+					  console.log('reply:'+reply);
+				  }
+				  );
 
 
 				//  	query.on("row", function(row,result){
 				    
-                    let reply = `The courses available for computer science are ${query}. What is your degree?`;
-					  sendTextMessage(sender, reply);
-					  console.log('reply:'+reply);
+                    
 			//  });
 			  })
 			  //let allcoursesString = alldegrees.join(', ');
