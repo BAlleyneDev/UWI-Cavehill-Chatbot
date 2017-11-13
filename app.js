@@ -263,7 +263,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					  return console.error('Error acquiring client');
 				  }
 				  var rows = [];
-				  var query = client.query(`SELECT courses FROM compsci_courses`);
+				  var query = client.query(`SELECT course FROM compsci_courses`);
 			  })
 			  //let allcoursesString = alldegrees.join(', ');
 			  query.on("row", function(row,result){
