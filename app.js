@@ -263,7 +263,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					  return console.error('Error acquiring client');
 				  }
 				  var rows = [];
-				  var query = client.query(`SELECT course FROM compsci_courses`,
+				  var query = client.query(`SELECT course FROM compsci_courses WHERE id=4`,
 				  function(err, result) {
 					    var value = JSON.stringify(result.rows);
 						let courses = [];
