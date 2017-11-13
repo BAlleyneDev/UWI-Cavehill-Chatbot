@@ -266,9 +266,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  var query = client.query(`SELECT course FROM compsci_courses`,
 				  function(err, result) {
 					    var value = JSON.stringify(result.rows);
-						value.foreach(function(val){
-							console.log(val.value);
-						}) 
+						for(var i=0; i<value.length; i++)
+						{
+							console.log(value[i]);
+						}
 
 						
                         console.log('ARRAY VAL='+value[3]);
