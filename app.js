@@ -264,14 +264,17 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  }
 				  var rows = [];
 				  var query = client.query(`SELECT course FROM compsci_courses`);
-			  })
-			  //let allcoursesString = alldegrees.join(', ');
-			  query.on("row", function(row,result){
+
+
+				  			  query.on("row", function(row,result){
 				    let results = result.addRow(row);
                     let reply = `The courses available for computer science are ${results}. What is your degree?`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 			  });
+			  })
+			  //let allcoursesString = alldegrees.join(', ');
+
 			  
             
 			
