@@ -265,8 +265,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  var rows = [];
 				  var query = client.query(`SELECT course FROM compsci_courses`,
 				  function(err, result) {
-					    var value = JSON.stringify(result.rows);
-                        let reply = `The courses available for computer science are ${value}. What is your degree?`;
+                        let reply = `The courses available for computer science are ${result.rows.course}. What is your degree?`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
