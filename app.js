@@ -269,10 +269,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						var s;
 						for(var i=0; i<value.length; i++)
 						{
-							s=s+value[i];
+							s=s.course+value[i];
 							
 						}
-                       console.log('Array: '+s.concat(s));
+                       console.log('Array: '+s);
 						
                         console.log('ARRAY VAL='+value[3]);
                         let reply = `The courses available for computer science are ${s.value}. What is your degree?`;
