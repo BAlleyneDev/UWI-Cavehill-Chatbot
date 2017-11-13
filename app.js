@@ -256,7 +256,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 */
         case "deg-courses":
 		//  courses.readAllCourses(function(alldegrees){
-			  console.log("Degrees:"+alldegrees);
+			//  console.log("Degrees:"+alldegrees);
 			  var pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
