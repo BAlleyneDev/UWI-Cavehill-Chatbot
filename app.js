@@ -266,13 +266,18 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  var query = client.query(`SELECT course FROM compsci_courses`,
 				  function(err, result) {
 					    var value = JSON.stringify(result.rows);
-						var s;
-						for(var i=0; i<value.length; i++)
+						let courses = [];
+						let coursesSEC= [];
+						for (let i=0; i<result.rows.length; i++)
 						{
-							s=s.course+value[i];
-							
+                           courses.push(result.rows[i]['course']);
 						}
-                       console.log('Array: '+s);
+						for (let i=0; i<value.rows.length; i++)
+						{
+                           coursesSEC.push(result.rows[i]['course']);
+						}
+                       console.log('Array 1: '+courses);
+					   console.log('Array 2: '+coursesSEC);
 						
                         console.log('ARRAY VAL='+value[3]);
                         let reply = `The courses available for computer science are ${s.value}. What is your degree?`;
