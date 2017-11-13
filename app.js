@@ -267,8 +267,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 
 
 				//  	query.on("row", function(row,result){
-				    let results = query.join(',');
-                    let reply = `The courses available for computer science are ${results}. What is your degree?`;
+				    
+                    let reply = `The courses available for computer science are ${query}. What is your degree?`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 			//  });
