@@ -270,6 +270,27 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  if((sem == '1'|| sem=='2') && yr=='1')
 			  {
 				  sem='1&2';
+				  let semb="1&2";
+			  }
+			  else if(sem =='1' && yr=='2')
+			  {
+				  sem="1&2";
+				  semb="1";
+			  }
+			  else if(sem =='2' && yr=='2')
+			  {
+				  sem="1&2";
+				  semb="2";
+			  }
+			  else if(sem =='1' && yr=='3')
+			  {
+				  sem="1&2";
+				  semb="1"
+			  }
+			   else if(sem =='2' && yr=='3')
+			  {
+				  sem="1&2";
+				  semb="2"
 			  }
 
 			  var pool = new pg.Pool(config.PG_CONFIG);
@@ -278,7 +299,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					  return console.error('Error acquiring client');
 				  }
 				  var rows = [];
-				  var query = client.query(`SELECT course FROM compsci_courses WHERE year='${yr}' AND semester='${sem}'`,
+				  var query = client.query(`SELECT course FROM compsci_courses WHERE year='${yr}' AND semester IN('${sem}','${semb}')`,
 				  function(err, result) {
 					    var value = JSON.stringify(result.rows);
 						let courses = [];
