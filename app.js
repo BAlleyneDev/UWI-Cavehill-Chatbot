@@ -257,13 +257,21 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
         case "deg-courses":
 		//  courses.readAllCourses(function(alldegrees){
 			//  console.log("Degrees:"+alldegrees);
+			if(isDefined(contexts[0]) && contexts[0].parameters)
+		{
+            let sem = (isDefined(contexts[0].parameters['semester']) 
+			  && contexts[0].parameters['semester']!='') ? contexts[0].parameters['semester']:'';
+
+			let yr = (isDefined(contexts[0].parameters['year-level']) 
+			  && contexts[0].parameters['year-level']!='') ? contexts[0].parameters['year-level']:'';
+
 			  var pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
 				  }
 				  var rows = [];
-				  var query = client.query(`SELECT course FROM compsci_courses WHERE id=4`,
+				  var query = client.query(`SELECT course FROM compsci_courses WHERE year='${yr}' AND semester='${sem}'`,
 				  function(err, result) {
 					    var value = JSON.stringify(result.rows);
 						let courses = [];
@@ -289,6 +297,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                     
 			//  });
 			  })
+	} else{
+		sendTextMessage(sender,responseText);
+	}
 			  //let allcoursesString = alldegrees.join(', ');
 
 			  
