@@ -257,7 +257,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
         case "deg-courses":
 		//  courses.readAllCourses(function(alldegrees){
 			//  console.log("Degrees:"+alldegrees);
-			if(isDefined(contexts[0]) && contexts[0].parameters)
+			if(isDefined(contexts[0]) && contexts[0].name == 'degreeCourses' && contexts[0].parameters)
 		{
             let sem = (isDefined(contexts[0].parameters['semester']) 
 			  && contexts[0].parameters['semester']!='') ? contexts[0].parameters['semester']:'';
