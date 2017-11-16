@@ -267,6 +267,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 
 			  console.log(sem);
 			  console.log(yr);
+			  if((sem == '1'|| sem=='2') && yr=='1')
+			  {
+				  sem='1&2';
+			  }
 
 			  var pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
