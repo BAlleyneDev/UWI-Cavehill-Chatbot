@@ -308,9 +308,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						
 						for (let i=0; i<result.rows.length; i++)
 						{
-                           courses.push(result.rows[i]['course']);
 						   courses.push('\n');
+                           courses.push(result.rows[i]['course']);
 						}
+						courses.push('\n');
 						
                        console.log('Array 1: '+courses);
 					   
