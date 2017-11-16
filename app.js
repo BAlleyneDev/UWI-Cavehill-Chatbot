@@ -265,12 +265,14 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			let yr = (isDefined(parameters['year-level']) 
 			  && parameters['year-level']!='') ? parameters['year-level']:'';
 
+			  let semb='';
+
 			  console.log(sem);
 			  console.log(yr);
 			  if((sem == '1'|| sem=='2') && yr=='1')
 			  {
 				  sem='1&2';
-				  let semb="1&2";
+				  semb="1&2";
 			  }
 			  else if(sem =='1' && yr=='2')
 			  {
