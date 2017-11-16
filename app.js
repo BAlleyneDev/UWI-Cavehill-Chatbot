@@ -259,11 +259,14 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			//  console.log("Degrees:"+alldegrees);
 			if(!isDefined(contexts[0] && contexts[0].parameters))
 		{
-            let sem = (isDefined(contexts[0].parameters['semester']) 
-			  && contexts[0].parameters['semester']!='') ? contexts[0].parameters['semester']:'';
+            let sem = (isDefined(result.parameters['semester']) 
+			  && result.parameters['semester']!='') ? result.parameters['semester']:'';
 
-			let yr = (isDefined(contexts[0].parameters['year-level']) 
-			  && contexts[0].parameters['year-level']!='') ? contexts[0].parameters['year-level']:'';
+			let yr = (isDefined(result.parameters['year-level']) 
+			  && result.parameters['year-level']!='') ? result.parameters['year-level']:'';
+
+			  console.log(sem);
+			  console.log(yr);
 
 			  var pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
