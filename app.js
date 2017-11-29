@@ -278,7 +278,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						for (let i=0; i<result.rows.length; i++)
 						{
 						   hours.push('\n');
+						   hours.push('Weekdays:\n');
                            hours.push(result.rows[i]['opening_hour']);
+						   hours.push('Weekends:\n');
 						   hours.push(result.rows[i]['weekend_open']);
 						}
 						hours.push('\n');
