@@ -257,6 +257,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 */
 
         case 'closing-time':
+		     console.log('In CLOSING');
              if(!isDefined(contexts[0] && contexts[0].parameters))
 		     {
 				 let building = (isDefined(parameters['campus-places'])
