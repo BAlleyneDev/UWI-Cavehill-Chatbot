@@ -279,6 +279,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						{
 						   hours.push('\n');
                            hours.push(result.rows[i]['opening_hour']);
+						   hours.push(result.rows[i]['weekend_open']);
 						}
 						hours.push('\n');
 						
