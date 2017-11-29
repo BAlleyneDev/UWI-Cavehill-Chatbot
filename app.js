@@ -253,7 +253,58 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			   sendTextMessage(sender, responseText);
 		   }
 		break;
+
 */
+
+        case 'closing-time':
+             if(!isDefined(contexts[0] && contexts[0].parameters))
+		     {
+				 let building = (isDefined(parameters['campus-places'])
+				 && parameters['campus-places']!='') ? parameters['campus-places']:'';
+
+
+				 var pool = new pg.Pool(config.PG_CONFIG);
+			  pool.connect(function(err, client, done){
+				  if (err){
+					  return console.error('Error acquiring client');
+				  }
+				  var rows = [];
+				  var query = client.query(`SELECT opening_hour,weekend_open FROM building_opening_hours WHERE building_name='${building}'`,
+				  function(err, result) {
+					    var value = JSON.stringify(result.rows);
+						let hours = [];
+						
+						for (let i=0; i<result.rows.length; i++)
+						{
+						   hours.push('\n');
+                           hours.push(result.rows[i]['course']);
+						}
+						hours.push('\n');
+						
+                       console.log('Array 1: '+hours);
+					   
+						
+                        console.log('ARRAY VAL='+value[3]);
+                        let reply = `${building} opening  available: \n ${hours}`;
+					  sendTextMessage(sender, reply);
+					  console.log('reply:'+reply);
+				  }
+				  );
+
+
+				//  	query.on("row", function(row,result){
+				    
+                    
+			//  });
+			  })
+		     }
+			 else
+			 {
+		      sendTextMessage(sender,responseText);
+	         }
+		break;
+
+
         case "deg-courses":
 		//  courses.readAllCourses(function(alldegrees){
 			//  console.log("Degrees:"+alldegrees);
@@ -317,7 +368,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					   
 						
                         console.log('ARRAY VAL='+value[3]);
-                        let reply = `The courses available for computer science are ${courses}. What is your degree?`;
+                        let reply = `The courses available for computer science are ${courses} What is your degree?`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
