@@ -256,7 +256,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 
 */
 
-        case 'closing-time':
+        case "closing-time":
 		     console.log('In CLOSING');
              if(!isDefined(contexts[0] && contexts[0].parameters))
 		     {
@@ -278,7 +278,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						for (let i=0; i<result.rows.length; i++)
 						{
 						   hours.push('\n');
-                           hours.push(result.rows[i]['course']);
+                           hours.push(result.rows[i]['opening_hour']);
 						}
 						hours.push('\n');
 						
