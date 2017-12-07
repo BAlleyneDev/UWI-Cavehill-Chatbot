@@ -282,6 +282,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                            hours.push(result.rows[i]['opening_hour']);
 						   hours.push('\n Weekends:\n');
 						   hours.push(result.rows[i]['weekend_open']);
+						    hours.push('\n Friday(if applicable):\n');
+						   hours.push(result.rows[i]['friday']);
 						}
 						hours.push('\n');
 						
@@ -372,7 +374,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					   
 						
                         console.log('ARRAY VAL='+value[3]);
-                        let reply = `The courses available for computer science are ${courses} What is your degree?`;
+                        let reply = `The courses available for computer science are ${courses}.`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
