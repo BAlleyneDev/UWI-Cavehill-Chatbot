@@ -270,7 +270,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					  return console.error('Error acquiring client');
 				  }
 				  var rows = [];
-				  var query = client.query(`SELECT opening_hour,weekend_open FROM building_opening_hours WHERE building_name='${building}'`,
+				  var query = client.query(`SELECT opening_hour,weekend_open,friday FROM building_opening_hours WHERE building_name='${building}'`,
 				  function(err, result) {
 					    var value = JSON.stringify(result.rows);
 						let hours = [];
