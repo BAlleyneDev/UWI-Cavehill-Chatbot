@@ -280,7 +280,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						   hours.push('\n');
 						   hours.push('Weekdays:\n');
                            hours.push(result.rows[i]['opening_hour']);
-						   hours.push('Weekends:\n');
+						   hours.push('\n Weekends:\n');
 						   hours.push(result.rows[i]['weekend_open']);
 						}
 						hours.push('\n');
@@ -289,7 +289,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					   
 						
                         console.log('ARRAY VAL='+value[3]);
-                        let reply = `${building} opening  available: \n ${hours}`;
+                        let reply = `${building} opening  times are: \n ${hours}`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
