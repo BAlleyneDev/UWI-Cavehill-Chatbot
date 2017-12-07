@@ -282,8 +282,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                            hours.push(result.rows[i]['opening_hour']);
 						   hours.push('\n Weekends:\n');
 						   hours.push(result.rows[i]['weekend_open']);
-						    hours.push('\n Friday(if applicable):\n');
+						   hours.push('\n Friday(if applicable):\n');
 						   hours.push(result.rows[i]['friday']);
+						   console.log('RESULT ROWS = '+result.rows[i]);
 						}
 						hours.push('\n');
 						
