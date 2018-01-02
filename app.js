@@ -311,6 +311,65 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	         }
 		break;
 
+        case "lecturer-courses":
+		   if(!isDefined(contexts[0] && contexts[0].parameters))
+		   {
+               let name = (isDefined(parameters['lecturer']) 
+			  && parameters['lecturer']!='') ? parameters['lecturer']:'';
+               
+
+			  var pool = new pg.Pool(config.PG_CONFIG);
+			  pool.connect(function(err, client, done){
+				  if (err){
+					  return console.error('Error acquiring client');
+				  }
+				  var rows = [];
+				  var query = client.query(`SELECT courses FROM lecturers WHERE name='${name}'`,
+				  function(err, result) {
+					    var value = JSON.stringify(result.rows);
+						let courses = [];
+						
+						for (let i=0; i<result.rows.length; i++)
+						{
+						   courses.push('\n');
+                           courses.push(result.rows[i]['courses']);
+						}
+						courses.push('\n');
+						
+                       console.log('Array 1: '+courses);
+					   
+						
+                        let reply = `${name} teaches ${courses}.`;
+					  sendTextMessage(sender, reply);
+					  console.log('reply:'+reply);
+				  }
+				  );
+
+
+				//  	query.on("row", function(row,result){
+				    
+                    
+			//  });
+			  })
+		   }
+		   else
+		   {
+			   sendTextMessage(sender,responseText);
+		   }
+		break;
+
+        case "required_coursess":
+           if(!isDefined(contexts[0] && contexts[0].parameters))
+		   {
+               let type = (isDefined(parameters['type']) 
+			  && parameters['type']!='') ? parameters['type']:'';
+
+		   }
+		   else
+		   {
+			   sendTextMessage(sender,responseText);
+		   }
+		break;
 
         case "deg-courses":
 		//  courses.readAllCourses(function(alldegrees){
