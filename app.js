@@ -340,7 +340,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                        console.log('Array 1: '+courses);
 					   
 						
-                        let reply = `${name} teaches ${courses}.`;
+                        let reply = `${name} teached ${courses}.`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
