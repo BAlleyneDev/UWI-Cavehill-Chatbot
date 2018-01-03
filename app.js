@@ -274,16 +274,19 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  function(err, result) {
 					    var value = JSON.stringify(result.rows);
 						let hours = [];
+						let hoursPrint;
 						
 						for (let i=0; i<result.rows.length; i++)
 						{
-						   hours.push('\n');
 						   hours.push('Weekdays:\n');
                            hours.push(result.rows[i]['opening_hour']);
 						   hours.push('\n Weekends:\n');
 						   hours.push(result.rows[i]['weekend_open']);
 						   hours.push('\n Friday(if applicable):\n');
 						   hours.push(result.rows[i]['friday']);
+						   hoursPrint = hours.join(",");
+						   hours.push('\n');
+
 						   console.log('RESULT ROWS = '+ JSON.stringify(result.rows[i]));
 						}
 						hours.push('\n');
@@ -292,7 +295,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					   
 						
                         console.log('ARRAY VAL='+value[3]);
-                        let reply = `${building} opening  times are: \n ${hours}`;
+                        let reply = `${building} opening  times are: \n ${hoursPrint}`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
@@ -423,11 +426,13 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  function(err, result) {
 					    var value = JSON.stringify(result.rows);
 						let courses = [];
+						let coursesPrint;
 						
 						for (let i=0; i<result.rows.length; i++)
 						{
-						   courses.push('\n');
                            courses.push(result.rows[i]['course']);
+						   coursesPrint = courses.join(",");
+						   courses.push('\n');
 						}
 						courses.push('\n');
 						
@@ -435,7 +440,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					   
 						
                         console.log('ARRAY VAL='+value[3]);
-                        let reply = `The courses available for computer science are ${courses}.`;
+                        let reply = `The courses available for computer science are ${coursesPrint}.`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
