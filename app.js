@@ -280,8 +280,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						{
 						   hours.push('Weekdays:\n');
                            hours.push(result.rows[i]['opening_hour']);
+						   hoursPrint = hours.join(",");
 						   hours.push('\n Weekends:\n');
 						   hours.push(result.rows[i]['weekend_open']);
+						   hoursPrint = hours.join(",");
 						   hours.push('\n Friday(if applicable):\n');
 						   hours.push(result.rows[i]['friday']);
 						   hoursPrint = hours.join(",");
