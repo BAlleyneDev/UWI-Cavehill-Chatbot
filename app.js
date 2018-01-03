@@ -336,8 +336,6 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						   coursesPrint = courses.join(",");
 						   courses.push('\n');
 						}
-						courses.push('\n');
-						coursesPrint = courses.join(",");
 						
                        console.log('Array 1: '+coursesPrint);
 					   
