@@ -390,7 +390,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						for (let i=0; i<result.rows.length; i++)
 						{
                            courses.push(result.rows[i]['course']);
-						   coursesPrint = courses.join(",");
+						   coursesPrint = courses.join("");
 						   courses.push('\n');
 						}
 						courses.push('\n');
@@ -399,7 +399,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					   
 						
                         console.log('ARRAY VAL='+value[3]);
-                        let reply = `The courses you are required to take for computer science(${type}) are ${coursesPrint}.`;
+                        let reply = `The courses you are required to take for computer science(${type}) are ${coursesPrint}.
+						* Any of the research projects can be done *`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
