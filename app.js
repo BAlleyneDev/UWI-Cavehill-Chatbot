@@ -374,6 +374,13 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 
 			  let degName = (isDefined(parameters['degree-names']) 
 			  && parameters['degree-names']!='') ? parameters['degree-names']:'';
+
+              let NB="";
+			  if(type == "double")
+			  {
+               NB="\n* Any of the research projects can be done *"
+			  }
+
               
 			  var pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err,client, done){
@@ -399,7 +406,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					   
 						
                         console.log('ARRAY VAL='+value[3]);
-                        let reply = `The courses you are required to take for computer science(${type}) are \n${coursesPrint}.\n* Any of the research projects can be done *`;
+                        let reply = `The courses you are required to take for computer science(${type}) are \n${coursesPrint}.${NB}`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
