@@ -366,7 +366,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		   }
 		break;
 
-        case "required_coursess":
+        case "required_courses":
            if(!isDefined(contexts[0] && contexts[0].parameters))
 		   {
                let type = (isDefined(parameters['type']) 
