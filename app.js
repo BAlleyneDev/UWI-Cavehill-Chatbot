@@ -279,19 +279,21 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						for (let i=0; i<result.rows.length; i++)
 						{
 						   hours.push('Weekdays:\n');
+						   hoursPrint = hours.join(",");
                            hours.push(result.rows[i]['opening_hour']);
 						   hoursPrint = hours.join(",");
 						   hours.push('\n Weekends:\n');
+						   hoursPrint = hours.join(",");
 						   hours.push(result.rows[i]['weekend_open']);
 						   hoursPrint = hours.join(",");
 						   hours.push('\n Friday(if applicable):\n');
+						   hoursPrint = hours.join(",");
 						   hours.push(result.rows[i]['friday']);
 						   hoursPrint = hours.join(",");
 						   hours.push('\n');
 
 						   console.log('RESULT ROWS = '+ JSON.stringify(result.rows[i]));
 						}
-						hours.push('\n');
 						
                        console.log('Array 1: '+hours);
 					   
