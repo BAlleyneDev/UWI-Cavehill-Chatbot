@@ -399,8 +399,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					   
 						
                         console.log('ARRAY VAL='+value[3]);
-                        let reply = `The courses you are required to take for computer science(${type}) are ${coursesPrint}.
-						* Any of the research projects can be done *`;
+                        let reply = `The courses you are required to take for computer science(${type}) are \n${coursesPrint}.\n* Any of the research projects can be done *`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
