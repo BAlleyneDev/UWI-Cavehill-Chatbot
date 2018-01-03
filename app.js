@@ -328,6 +328,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  function(err, result) {
 					    var value = JSON.stringify(result.rows);
 						let courses = [];
+						let coursesPrint;
 						
 						for (let i=0; i<result.rows.length; i++)
 						{
@@ -335,12 +336,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                            courses.push(result.rows[i]['courses']);
 						}
 						courses.push('\n');
-						courses.join(" and ");
+						coursesPrint = courses.join(" and ");
 						
-                       console.log('Array 1: '+courses);
+                       console.log('Array 1: '+coursesPrint);
 					   
 						
-                        let reply = `${name} teached ${courses}.`;
+                        let reply = `${name} teaches ${coursesPrint}.`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
