@@ -332,11 +332,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						
 						for (let i=0; i<result.rows.length; i++)
 						{
-						   courses.push('\n');
                            courses.push(result.rows[i]['courses']);
+						   coursesPrint = courses.join(",");
+						   courses.push('\n');
 						}
 						courses.push('\n');
-						coursesPrint = courses.join(" and ");
+						coursesPrint = courses.join(",");
 						
                        console.log('Array 1: '+coursesPrint);
 					   
