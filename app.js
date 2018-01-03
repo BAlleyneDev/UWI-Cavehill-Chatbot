@@ -372,6 +372,40 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                let type = (isDefined(parameters['type']) 
 			  && parameters['type']!='') ? parameters['type']:'';
 
+			  let degName = (isDefined(parameters['degree-names']) 
+			  && parameters['degree-names']!='') ? parameters['degree-names']:'';
+              
+			  var pool = new pg.Pool(config.PG_CONFIG);
+			  pool.connect(function(err,client, done){
+				  if (err){
+					  return console.error('Error acquiring client');
+				  }
+				  var rows = [];
+				  var query = client.query(`SELECT course FROM compsci_courses WHERE ${type}='required'`,
+				  function(err, result) {
+					    var value = JSON.stringify(result.rows);
+						let courses = [];
+						let coursesPrint;
+						
+						for (let i=0; i<result.rows.length; i++)
+						{
+                           courses.push(result.rows[i]['course']);
+						   coursesPrint = courses.join(",");
+						   courses.push('\n');
+						}
+						courses.push('\n');
+						
+                       console.log('Array 1: '+courses);
+					   
+						
+                        console.log('ARRAY VAL='+value[3]);
+                        let reply = `The courses you are required to take for computer science(${type}) are ${coursesPrint}.`;
+					  sendTextMessage(sender, reply);
+					  console.log('reply:'+reply);
+				  }
+				  );
+
+			  })
 		   }
 		   else
 		   {
@@ -489,6 +523,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		}
 		sendTextMessage(sender,responseText);
 		break;
+
 		case "degree-enquiry":
 		let replies =[
 			{
