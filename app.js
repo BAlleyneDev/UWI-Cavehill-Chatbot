@@ -397,7 +397,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						console.log(`Result array: ${value}`);
 						for (let i=0; i<result.rows.length; i++)
 						{
-                           courses.push(result.rows[i]['course']);
+                           courses.push(result.rows[i].course);
 						   coursesPrint = courses.join("");
 						   courses.push('\n');
 						}
