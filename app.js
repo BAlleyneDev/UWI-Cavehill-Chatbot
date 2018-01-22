@@ -375,10 +375,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  let degName = (isDefined(parameters['degree-names']) 
 			  && parameters['degree-names']!='') ? parameters['degree-names']:'';
 
-              let NB="";
+              let NB="\n *(English for Academic Purposes OR Rhetoric) AND Caribbean Civilization AND Law & Gov*";
 			  if(type == "double")
 			  {
-               NB="\n* Any of the research projects can be done *"
+               NB="\n* One of the 3 research projects must be done * \n *(English for Academic Purposes OR Rhetoric) AND Caribbean Civilization AND Law & Gov*"
 			  }
 
               
@@ -394,6 +394,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						let courses = [];
 						let coursesPrint;
 						
+						console.log(`Result array: ${result}`);
 						for (let i=0; i<result.rows.length; i++)
 						{
                            courses.push(result.rows[i]['course']);
