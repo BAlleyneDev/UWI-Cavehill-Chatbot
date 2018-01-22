@@ -378,7 +378,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
               let NB="\n *(English for Academic Purposes OR Rhetoric) AND Caribbean Civilization AND Law & Gov*";
 			  if(type == "double")
 			  {
-               NB="\n* One of the 3 research projects must be done * \n *(English for Academic Purposes OR Rhetoric) AND Caribbean Civilization AND Law & Gov*"
+               NB="\n*One of the 3 research projects must be done* \n *(English for Academic Purposes OR Rhetoric) AND Caribbean Civilization AND Law & Gov*"
 			  }
 
               
