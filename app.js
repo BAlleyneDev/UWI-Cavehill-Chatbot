@@ -413,7 +413,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                        console.log('Array 1: '+lecSemester);
 					   
 						
-                        let reply = `${lecSemester} teaches ${course} in semester ${semester}.`;
+                        let reply = `${lecSemester} teaches ${courseName} in semester ${semester}.`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
