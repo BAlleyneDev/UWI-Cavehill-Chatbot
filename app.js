@@ -375,6 +375,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  let semester = (isDefined(parameters['semester']) 
 			  && parameters['semester']!='') ? parameters['semester']:'';
 			  
+			  console.log('COURSENAME'+courseName);
 
 			  var pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
