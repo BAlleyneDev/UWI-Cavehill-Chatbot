@@ -400,6 +400,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						else
 						if(isDefined(result.rows[0].lectsemtwo))
 						{
+							console.log('GOT INSIDE IF');
 							if(semester == 2)
 							  lecSemester=result.rows[0].lectsemtwo;
 							else
