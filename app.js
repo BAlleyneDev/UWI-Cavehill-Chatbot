@@ -386,18 +386,18 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  function(err, result) {
 						var value = JSON.stringify(result.rows);
 						let lecSemester;
-						if (result.rows[i]['lectsemone'] != null)
+						if (result.rows[0]['lectsemone'] != null)
 						{
 							if(semester == 1)
-							  lecSemester=result.rows[i]['lectsemone'];
+							  lecSemester=result.rows[0]['lectsemone'];
 							else
 							  lectSemester = "No lecturer has been assigned to this course."
 						}
 						else
-						if(result.rows[i]['lectsemtwo'] != null)
+						if(result.rows[0]['lectsemtwo'] != null)
 						{
 							if(semester == 2)
-							  lecSemester=result.rows[i]['lectsemtwo'];
+							  lecSemester=result.rows[0]['lectsemtwo'];
 							else
 							  lecSemester= "No lecturer has been assigned to this course."
 						}
