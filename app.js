@@ -366,6 +366,71 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		   }
 		break;
 
+		case "course_lect_sem":
+		   if(!isDefined(contexts[0] && contexts[0].parameters))
+		   {
+			  let courseName = (isDefined(parameters['course-names']) 
+			  && parameters['course-names']!='') ? parameters['course-names']:'';
+			  
+			  let semester = (isDefined(parameters['semester']) 
+			  && parameters['semester']!='') ? parameters['semester']:'';
+			  
+
+			  var pool = new pg.Pool(config.PG_CONFIG);
+			  pool.connect(function(err, client, done){
+				  if (err){
+					  return console.error('Error acquiring client');
+				  }
+				  var rows = [];
+				  var query = client.query(`SELECT lectsemone,lectsemtwo FROM compsci_courses WHERE course LIKE '${courseName}%'`,
+				  function(err, result) {
+						var value = JSON.stringify(result.rows);
+						let lecSemester;
+						if (result.rows[i]['lectsemone'] != null)
+						{
+							if(semester == 1)
+							  lecSemester=result.rows[i]['lectsemone'];
+							else
+							  lectSemester = "No lecturer has been assigned to this course."
+						}
+						else
+						if(result.rows[i]['lectsemtwo'] != null)
+						{
+							if(semester == 2)
+							  lecSemester=result.rows[i]['lectsemtwo'];
+							else
+							  lecSemester= "No lecturer has been assigned to this course."
+						}
+						else{
+							lectSemester = "No lecturer has been assigned to this course."
+						}
+						
+						
+						
+						
+                       console.log('Array 1: '+lecSemester);
+					   
+						
+                        let reply = `${lecSemester} teaches ${course} in semester ${semester}.`;
+					  sendTextMessage(sender, reply);
+					  console.log('reply:'+reply);
+				  }
+				  );
+
+
+				//  	query.on("row", function(row,result){
+				    
+                    
+			//  });
+			  })
+
+		   }
+		   else
+		   {
+			   sendTextMessage(sender,responseText);
+		   }
+		break;
+
         case "required_courses":
            if(!isDefined(contexts[0] && contexts[0].parameters))
 		   {
