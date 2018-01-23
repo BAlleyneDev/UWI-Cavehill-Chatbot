@@ -393,7 +393,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							if(semester == 1)
 							  lecSemester=result.rows[0]['lectsemone'];
 							else
-							  lectSemester = "No lecturer has been assigned to this course."
+							  lecSemester = "No lecturer has been assigned to this course."
 						}
 						else
 						if(isDefined(result.rows[0]['lectsemtwo']))
@@ -404,7 +404,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							  lecSemester= "No lecturer has been assigned to this course."
 						}
 						else{
-							lectSemester = "No lecturer has been assigned to this course."
+							lecSemester = "No lecturer has been assigned to this course."
 						}
 						
 						
@@ -412,8 +412,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						
                        console.log('Array 1: '+lecSemester);
 					   
-						
-                        let reply = `${lecSemester} teaches ${courseName} in semester ${semester}.`;
+						if (lecSemester == "No lecturer has been assigned to this course.")
+						  let reply = `${lecSemester}`;
+						else
+                          let reply = `${lecSemester} teaches ${courseName} in semester ${semester}.`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
