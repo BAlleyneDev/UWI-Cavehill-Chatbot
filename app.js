@@ -413,7 +413,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                        console.log('Array 1: '+lecSemester);
 					   
 						if (lecSemester == "No lecturer has been assigned to this course.")
-						  let reply = `${lecSemester}`;
+						  let reply = `Sorry. ${lecSemester}`;
 						else
                           let reply = `${lecSemester} teaches ${courseName} in semester ${semester}.`;
 					  sendTextMessage(sender, reply);
