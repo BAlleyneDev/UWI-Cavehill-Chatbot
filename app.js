@@ -455,9 +455,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						var value = JSON.stringify(result.rows);
 						console.log("VALUE:"+value);
 						console.log("RATING:"+result.rows[0].rating);
-						let rating;
+						let rating="Test";
 						
-						if(isDefined(result.rows[0].rating))
+					/*	if(isDefined(result.rows[0].rating))
 						{		
 							  rating=result.rows[0].rating;
 						}
@@ -465,7 +465,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							rating = "There has been no rating assigned to this course.";
 						}
 						
-						
+						*/
 						
 						
                        console.log('Array 1: '+rating);
