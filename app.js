@@ -264,7 +264,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				 && parameters['campus-places']!='') ? parameters['campus-places']:'';
 
 
-				 var pool = new pg.Pool(config.PG_CONFIG);
+				 let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -325,7 +325,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  && parameters['lecturer']!='') ? parameters['lecturer']:'';
                
 
-			  var pool = new pg.Pool(config.PG_CONFIG);
+			  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -378,7 +378,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  console.log('COURSENAME'+courseName);
 			  console.log('SEMESTER:'+semester);
 
-			  var pool = new pg.Pool(config.PG_CONFIG);
+			  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -438,6 +438,65 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		   }
 		break;
 
+		case "course-rating":
+			if(!isDefined(contexts[0] && contexts[0].parameters))
+			{
+				let courseName = (isDefined(parameters['course-names']) 
+			  && parameters['course-names']!='') ? parameters['course-names']:'';
+
+			  let pool = new pg.Pool(config.PG_CONFIG);
+			  pool.connect(function(err, client, done){
+				  if (err){
+					  return console.error('Error acquiring client');
+				  }
+				  var rows = [];
+				  var query = client.query(`SELECT lectsemone,lectsemtwo FROM compsci_courses WHERE course LIKE '${courseName}%'`,
+				  function(err, result) {
+						var value = JSON.stringify(result.rows);
+						console.log("VALUE:"+value);
+						console.log("LECTSEMTWO:"+result.rows[0].lectsemtwo);
+						let lecSemester;
+						if (isDefined(result.rows[0]['lectsemone']))
+						{
+							if(semester == 1)
+							  lecSemester=result.rows[0]['lectsemone'];
+							else
+							  lecSemester = "No lecturer has been assigned to this course."
+						}
+						
+						if(isDefined(result.rows[0].lectsemtwo))
+						{
+							console.log('GOT INSIDE IF');
+							if(semester == 2)
+							  lecSemester=result.rows[0].lectsemtwo;
+							else
+							  lecSemester= "No lecturer has been assigned to this course."
+						}
+						else{
+							lecSemester = "No lecturer has been assigned to this course."
+						}
+						
+						
+						
+						
+                       console.log('Array 1: '+lecSemester);
+					   let reply;
+						if (lecSemester == "No lecturer has been assigned to this course.")
+						    reply = `Sorry. ${lecSemester}`;
+						else
+                            reply = `${lecSemester} teaches ${courseName} in semester ${semester}.`;
+					  sendTextMessage(sender, reply);
+					  console.log('reply:'+reply);
+				  }
+				  );
+			  })
+			}
+			else
+			{
+				sendTextMessage(sender,responseText);
+			}
+		break;
+
         case "required_courses":
            if(!isDefined(contexts[0] && contexts[0].parameters))
 		   {
@@ -454,7 +513,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  }
 
               
-			  var pool = new pg.Pool(config.PG_CONFIG);
+			  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err,client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -534,7 +593,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  semb="2"
 			  }
 
-			  var pool = new pg.Pool(config.PG_CONFIG);
+			  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
