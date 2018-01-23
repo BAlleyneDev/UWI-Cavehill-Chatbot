@@ -456,21 +456,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						console.log("VALUE:"+value);
 						console.log("RATING:"+result.rows[0].rating);
 						let rating;
-						if (isDefined(result.rows[0]['rating']))
-						{
-							if(semester == 1)
-							  rating=result.rows[0]['rating'];
-							else
-							  rating = "There has been no rating assigned to this course.";
-						}
 						
 						if(isDefined(result.rows[0].rating))
-						{
-							console.log('GOT INSIDE IF');
-							if(semester == 2)
+						{		
 							  rating=result.rows[0].rating;
-							else
-							  rating= "There has been no rating assigned to this course.";
 						}
 						else{
 							rating = "There has been no rating assigned to this course.";
