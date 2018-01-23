@@ -450,41 +450,41 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					  return console.error('Error acquiring client');
 				  }
 				  var rows = [];
-				  var query = client.query(`SELECT lectsemone,lectsemtwo FROM compsci_courses WHERE course LIKE '${courseName}%'`,
+				  var query = client.query(`SELECT rating FROM compsci_courses WHERE course LIKE '${courseName}%'`,
 				  function(err, result) {
 						var value = JSON.stringify(result.rows);
 						console.log("VALUE:"+value);
-						console.log("LECTSEMTWO:"+result.rows[0].lectsemtwo);
-						let lecSemester;
-						if (isDefined(result.rows[0]['lectsemone']))
+						console.log("RATING:"+result.rows[0].rating);
+						let rating;
+						if (isDefined(result.rows[0]['rating']))
 						{
 							if(semester == 1)
-							  lecSemester=result.rows[0]['lectsemone'];
+							  rating=result.rows[0]['rating'];
 							else
-							  lecSemester = "No lecturer has been assigned to this course."
+							  rating = "There has been no rating assigned to this course.";
 						}
 						
-						if(isDefined(result.rows[0].lectsemtwo))
+						if(isDefined(result.rows[0].rating))
 						{
 							console.log('GOT INSIDE IF');
 							if(semester == 2)
-							  lecSemester=result.rows[0].lectsemtwo;
+							  rating=result.rows[0].rating;
 							else
-							  lecSemester= "No lecturer has been assigned to this course."
+							  rating= "There has been no rating assigned to this course.";
 						}
 						else{
-							lecSemester = "No lecturer has been assigned to this course."
+							rating = "There has been no rating assigned to this course.";
 						}
 						
 						
 						
 						
-                       console.log('Array 1: '+lecSemester);
+                       console.log('Array 1: '+rating);
 					   let reply;
-						if (lecSemester == "No lecturer has been assigned to this course.")
-						    reply = `Sorry. ${lecSemester}`;
+						if (rating == "There has been no rating assigned to this course.")
+						    reply = `Sorry. ${rating}`;
 						else
-                            reply = `${lecSemester} teaches ${courseName} in semester ${semester}.`;
+                            reply = `${courseName} has received a rating of ${rating}.(1-easy & 5-hard)`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
