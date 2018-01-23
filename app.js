@@ -397,7 +397,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							else
 							  lecSemester = "No lecturer has been assigned to this course."
 						}
-						else
+						
 						if(isDefined(result.rows[0].lectsemtwo))
 						{
 							console.log('GOT INSIDE IF');
