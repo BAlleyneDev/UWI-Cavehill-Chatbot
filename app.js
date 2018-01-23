@@ -397,10 +397,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							  lecSemester = "No lecturer has been assigned to this course."
 						}
 						else
-						if(isDefined(result.rows[1]['lectsemtwo']))
+						if(isDefined(value.lectsemtwo))
 						{
 							if(semester == 2)
-							  lecSemester=result.rows[1]['lectsemtwo'];
+							  lecSemester=value.lectsemtwo;
 							else
 							  lecSemester= "No lecturer has been assigned to this course."
 						}
