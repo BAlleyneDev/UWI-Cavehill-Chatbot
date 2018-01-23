@@ -385,8 +385,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  var query = client.query(`SELECT lectsemone,lectsemtwo FROM compsci_courses WHERE course LIKE '${courseName}%'`,
 				  function(err, result) {
 						var value = JSON.stringify(result.rows);
+						console.log("VALUE:"+value);
 						let lecSemester;
-						if (result.rows[0]['lectsemone'] != null)
+						if (isDefined(result.rows[0]['lectsemone']))
 						{
 							if(semester == 1)
 							  lecSemester=result.rows[0]['lectsemone'];
@@ -394,7 +395,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							  lectSemester = "No lecturer has been assigned to this course."
 						}
 						else
-						if(result.rows[0]['lectsemtwo'] != null)
+						if(isDefined(result.rows[0]['lectsemtwo']))
 						{
 							if(semester == 2)
 							  lecSemester=result.rows[0]['lectsemtwo'];
