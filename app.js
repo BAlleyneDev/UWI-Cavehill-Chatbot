@@ -388,6 +388,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  function(err, result) {
 						var value = JSON.stringify(result.rows);
 						console.log("VALUE:"+value);
+						console.log("LECTSEMTWO:"+value.lectsemtwo);
 						let lecSemester;
 						if (isDefined(result.rows[0]['lectsemone']))
 						{
