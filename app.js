@@ -388,7 +388,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  function(err, result) {
 						var value = JSON.stringify(result.rows);
 						console.log("VALUE:"+value);
-						console.log("LECTSEMTWO:"+value.lectsemtwo);
+						console.log("LECTSEMTWO:"+value[0].lectsemtwo);
 						let lecSemester;
 						if (isDefined(result.rows[0]['lectsemone']))
 						{
@@ -398,10 +398,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							  lecSemester = "No lecturer has been assigned to this course."
 						}
 						else
-						if(isDefined(value.lectsemtwo))
+						if(isDefined(value[0].lectsemtwo))
 						{
 							if(semester == 2)
-							  lecSemester=value.lectsemtwo;
+							  lecSemester=value[0].lectsemtwo;
 							else
 							  lecSemester= "No lecturer has been assigned to this course."
 						}
