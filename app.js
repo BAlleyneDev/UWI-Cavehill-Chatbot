@@ -584,7 +584,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			}
 
 			let catReply=`That is located in building ${building}. Check out ${reply} for its location.`;
-			sendTextMessage(sender, reply);
+			sendTextMessage(sender, catReply);
 		   }
 		   else
 			{
