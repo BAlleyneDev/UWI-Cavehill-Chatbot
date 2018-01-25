@@ -473,7 +473,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						if (rating == "There has been no rating assigned to this course.")
 						    reply = `Sorry. ${rating}`;
 						else
-                            reply = `${courseName} has received a rating of ${rating}.(1-easy & 5-hard)`;
+                            reply = `${courseName} has received a rating of ${rating} from a survey of students.(1-easy & 5-hard)`;
 					  sendTextMessage(sender, reply);
 					  console.log('reply:'+reply);
 				  }
@@ -481,6 +481,112 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  })
 			}
 			else
+			{
+				sendTextMessage(sender,responseText);
+			}
+		break;
+
+		case "locate_building":
+		   if(!isDefined(contexts[0] && contexts[0].parameters))
+		   {
+			let building = (isDefined(parameters['buildingsANDrooms']) 
+			&& parameters['buildingsANDrooms']!='') ? parameters['buildingsANDrooms']:'';
+
+			let reply;
+
+			if (building == "CHADM1")
+			{
+               reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHADM1/CHADM1_Frames.htm";
+			}
+			else if (building == "CHADM2")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHADM2/CHADM2_Frames.htm";
+			}
+			else if (building == "CHCAC")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHCAC/CHCAC_Frames.htm";
+			}
+			else if (building == "CHCC01")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHCC01/CHCC01_Frames.htm";
+			}
+			else if (building == "CHCTEX")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHCTEX/CHCTEX_Frames.htm";
+			}
+			else if (building == "CHDE01")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHDE01/CHDE01_Frames.htm";
+			}
+			else if (building == "CHHE01")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHHE01/CHHE01_Frames.htm";
+			}
+			else if (building == "CHHE02")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHHE02/CHHE02_Frames.htm";
+			}
+			else if (building == "CHHE03")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHHE03/CHHE03_Frames.htm";
+			}
+			else if (building == "CHLW01")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHLW01/CHLW01_Frames.htm";
+			}
+			else if (building == "CHNTC")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHNTC/CHNTC_Frames.htm";
+			}
+			else if (building == "CHOPEN")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHOPEN/CHOPEN_Frames.htm";
+			}
+			else if (building == "CHPA01")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHPA01/CHPA01_Frames.htm";
+			}
+			else if (building == "CHPA02")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHPA02/CHPA02_Frames.htm";
+			}
+			else if (building == "CHPA03")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHPA03/CHPA03_Frames.htm";
+			}
+			else if (building == "CHPA04")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHPA04/CHPA04_Frames.htm";
+			}
+			else if (building == "CHPA05")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHPA05/CHPA05_Frames.htm";
+			}
+			else if (building == "CHPA06")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHPA06/CHPA06_Frames.htm";
+			}
+			else if (building == "CHPG01")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHPG01/CHPG01_Frames.htm";
+			}
+			else if (building == "CHSS01")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHSS01/CHSS01_Frames.htm";
+			}
+			else if (building == "CHSS02")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHSS02/CHSS02_Frames.htm";
+			}
+			else if (building == "CHTC01")
+			{
+			   reply = "https://www.cavehill.uwi.edu/virtualtours/Buildings/CHTC01/CHTC01_Frames.htm";
+			}
+
+			let catReply=`That is located in building ${building}. Check out ${reply} for its location.`;
+			sendTextMessage(sender, reply);
+		   }
+		   else
 			{
 				sendTextMessage(sender,responseText);
 			}
