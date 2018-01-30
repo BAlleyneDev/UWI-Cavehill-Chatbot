@@ -393,6 +393,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						if (isDefined(result.rows[0].lectsemone))
 						{
 							console.log('SEM1IF');
+							comsole.log('SEMESTER:'+semester);
 							if(semester == 1)
 							  lecSemester=result.rows[0].lectsemone;
 							else
