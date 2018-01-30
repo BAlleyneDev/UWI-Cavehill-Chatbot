@@ -400,7 +400,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 							  lecSemester = "No lecturer has been assigned to this course."
 						}
 						
-						if(isDefined(result.rows[0].lectsemtwo) && lecSemester != result.rows[0].lectsemone)
+						else if(isDefined(result.rows[0].lectsemtwo) && lecSemester != result.rows[0].lectsemone)
 						{
 							console.log('SEM2IF');
 							if(semester == 2)
