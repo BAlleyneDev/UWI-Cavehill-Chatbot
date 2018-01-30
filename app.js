@@ -262,7 +262,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		     {
 				 let building = (isDefined(parameters['campus-places'])
 				 && parameters['campus-places']!='') ? parameters['campus-places']:'';
-
+				 
+				 if (building =="CHADM1")
+				     building = Admin; 
 
 				 let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
