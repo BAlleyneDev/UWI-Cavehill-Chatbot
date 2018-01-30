@@ -374,8 +374,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  let courseName = (isDefined(parameters['course-names']) 
 			  && parameters['course-names']!='') ? parameters['course-names']:'';
 			  
-			  let semester = (isDefined(parameters['semester']) 
-			  && parameters['semester']!='') ? parameters['semester']:'';
+			  let semester = (isDefined(parameters['school-period']) 
+			  && parameters['school-period']!='') ? parameters['school-period']:'';
 			  
 			  console.log('COURSENAME'+courseName);
 			  console.log('SEMESTER:'+semester);
