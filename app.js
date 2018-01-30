@@ -390,27 +390,24 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 						console.log("VALUE:"+value);
 						console.log("LECTSEMTWO:"+result.rows[0].lectsemtwo);
 						let lecSemester;
-						if (isDefined(result.rows[0].lectsemone))
+						if (isDefined(result.rows[0].lectsemone) || isDefined(result.rows[0].lectsemtwo))
 						{
 							console.log('SEM1IF');
 							console.log('SEMESTER:'+semester);
-							if(semester == 1)
+							if(semester == 1 && isDefined(result.rows[0].lectsemone))
+							{
 							  lecSemester=result.rows[0].lectsemone;
-							else
-							  lecSemester = "No lecturer has been assigned to this course."
-						}
-						
-						else if(isDefined(result.rows[0].lectsemtwo) )
-						{
-							console.log('SEM2IF');
-							if(semester == 2)
+							}
+							else if(semester == 2 && isDefined(result.rows[0].lectsemtwo))
+							{
 							  lecSemester=result.rows[0].lectsemtwo;
+							}
 							else
-							  lecSemester= "No lecturer has been assigned to this course."
+							  lecSemester = "No lecturer has been assigned to this course.";
 						}
-						else{
-							lecSemester = "No lecturer has been assigned to this course."
-						}
+						else
+							  lecSemester= "No lecturer has been assigned to this course.";
+						
 						
 						
 						
