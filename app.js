@@ -660,8 +660,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			//  console.log("Degrees:"+alldegrees);
 			if(!isDefined(contexts[0] && contexts[0].parameters))
 		{
-            let sem = (isDefined(parameters['semester']) 
-			  && parameters['semester']!='') ? parameters['semester']:'';
+            let sem = (isDefined(parameters['school-period']) 
+			  && parameters['school-period']!='') ? parameters['school-period']:'';
 
 			let yr = (isDefined(parameters['year-level']) 
 			  && parameters['year-level']!='') ? parameters['year-level']:'';
