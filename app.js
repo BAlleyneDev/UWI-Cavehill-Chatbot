@@ -663,8 +663,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
             let sem = (isDefined(parameters['school-period']) 
 			  && parameters['school-period']!='') ? parameters['school-period']:'';
 
-			let yr = (isDefined(parameters['year-level']) 
-			  && parameters['year-level']!='') ? parameters['year-level']:'';
+			let yr = (isDefined(parameters['school-year']) 
+			  && parameters['school-year']!='') ? parameters['school-year']:'';
 
 			  let semb='';
 
