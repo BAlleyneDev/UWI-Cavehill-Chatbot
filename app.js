@@ -309,10 +309,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 
 
 				//  	query.on("row", function(row,result){
-				    pool.end();
                     
 			//  });
 			  })
+			  pool.end();
 		     }
 			 else
 			 {
@@ -355,12 +355,12 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  }
 				  );
 
-				  pool.end();
 				//  	query.on("row", function(row,result){
 				    
                     
 			//  });
 			  })
+			  pool.end();
 		   }
 		   else
 		   {
@@ -437,9 +437,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				    
                     
 			//  });
-			    pool.end();
 			  })
-
+			  pool.end();
 		   }
 		   else
 		   {
@@ -487,8 +486,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					  console.log('reply:'+reply);
 				  }
 				  );
-				  pool.end();
 			  })
+			  pool.end();
 			}
 			else
 			{
@@ -648,8 +647,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					  console.log('reply:'+reply);
 				  }
 				  );
-				  pool.end();
+				  
 			  })
+			  pool.end();
 		   }
 		   else
 		   {
@@ -730,10 +730,10 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 
 
 				//  	query.on("row", function(row,result){
-				    
-                    pool.end();
+				
 			//  });
 			  })
+			  pool.end();
 	} else{
 		sendTextMessage(sender,responseText);
 	}
