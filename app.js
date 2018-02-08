@@ -309,7 +309,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 
 
 				//  	query.on("row", function(row,result){
-				    
+				    pool.end();
                     
 			//  });
 			  })
@@ -381,7 +381,6 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  console.log('SEMESTER:'+semester);
 
 			  let pool = new pg.Pool(config.PG_CONFIG);
-			  pool.end();
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -488,6 +487,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					  console.log('reply:'+reply);
 				  }
 				  );
+				  pool.end();
 			  })
 			}
 			else
@@ -648,7 +648,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 					  console.log('reply:'+reply);
 				  }
 				  );
-
+				  pool.end();
 			  })
 		   }
 		   else
@@ -731,7 +731,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 
 				//  	query.on("row", function(row,result){
 				    
-                    
+                    pool.end();
 			//  });
 			  })
 	} else{
