@@ -662,7 +662,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			//  console.log("Degrees:"+alldegrees);
 			if(!isDefined(contexts[0] && contexts[0].parameters))
 		{
-			console.log("DEFINED PARAMETERS :"+contexts[0] + contexts[0].parameters);
+			console.log("DEFINED PARAMETERS :"+contexts[0]);
             let sem = (isDefined(parameters['school-period']) 
 			  && parameters['school-period']!='') ? parameters['school-period']:'';
 
