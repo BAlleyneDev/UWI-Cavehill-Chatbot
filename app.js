@@ -662,6 +662,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			//  console.log("Degrees:"+alldegrees);
 			if(!isDefined(contexts[0] && contexts[0].parameters))
 		{
+			console.log("DEFINED PARAMETERS :"+contexts[0] + contexts[0].parameters);
             let sem = (isDefined(parameters['school-period']) 
 			  && parameters['school-period']!='') ? parameters['school-period']:'';
 
@@ -762,7 +763,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  {
 				  console.log('Pass to question if');
 				  let emailContent = 'A user just sent- '+question + " " + questionbody;
-				  sendEmail('New job application',emailContent);
+				  sendEmail('New question',emailContent);
 			  }
 		}
 		sendTextMessage(sender,responseText);
