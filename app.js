@@ -1475,12 +1475,13 @@ function sendEmail(subject, content, userID){
 	{
 		setSessionAndUser(userID);
 	}
-
+    console.log('USER EMAIL:'+user.email);
 	console.log('Reached the mail function');
        const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey('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');
 const msg = {
-  to: [config.EMAIL_TO,user.email],
+  to: config.EMAIL_TO,
+  to: user.email,
   from: config.EMAIL_FROM,
   subject: subject,
   text: content,
