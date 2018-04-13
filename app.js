@@ -763,7 +763,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  {
 				  console.log('Pass to question if');
 				  let emailContent = 'A user just sent- '+question + " " + questionbody;
-				  sendEmail('New question',emailContent);
+				  sendEmail('New question',emailContent, sender);
 			  }
 		}
 		sendTextMessage(sender,responseText);
@@ -1465,12 +1465,17 @@ function verifyRequestSignature(req, res, buf) {
 	}
 }
 
-function sendEmail(subject, content){
+function sendEmail(subject, content, userID){
+
+    setSessionAndUser(userId);
+	let user = usersMap.get(userId);
+
 	console.log('Reached the mail function');
        const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey('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');
 const msg = {
   to: config.EMAIL_TO,
+  cc: user.email,
   from: config.EMAIL_FROM,
   subject: subject,
   text: content,
