@@ -1481,7 +1481,7 @@ function sendEmail(subject, content, userID){
 sgMail.setApiKey('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');
 const msg = {
   to: config.EMAIL_TO,
-  to: user.email,
+  bcc: user.email,
   from: config.EMAIL_FROM,
   subject: subject,
   text: content,
