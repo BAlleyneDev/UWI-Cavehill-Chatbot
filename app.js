@@ -1467,8 +1467,14 @@ function verifyRequestSignature(req, res, buf) {
 
 function sendEmail(subject, content, userID){
 
-    setSessionAndUser(userId);
+	setSessionAndUser(userId);
 	let user = usersMap.get(userId);
+
+    console.log("USER MAP INFO "+user);
+	if(user == undefined)
+	{
+		setSessionAndUser(userId);
+	}
 
 	console.log('Reached the mail function');
        const sgMail = require('@sendgrid/mail');
