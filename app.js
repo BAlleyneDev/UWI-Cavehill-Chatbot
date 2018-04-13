@@ -65,7 +65,7 @@ const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 });
 const sessionIds = new Map();
 const usersMap = new Map();
-const  pool = new pg.Pool(config.PG_CONFIG);
+let pool = new pg.Pool(config.PG_CONFIG);
 
 // Index route
 app.get('/', function (req, res) {
@@ -313,7 +313,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                     
 			//  });
 			  })
-			  pool.end();
+			//  pool.end();
 		     }
 			 else
 			 {
@@ -361,7 +361,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                     
 			//  });
 			  })
-			  pool.end();
+			//  pool.end();
 		   }
 		   else
 		   {
@@ -439,7 +439,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                     
 			//  });
 			  })
-			  pool.end();
+			//  pool.end();
 		   }
 		   else
 		   {
@@ -488,7 +488,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  }
 				  );
 			  })
-			  pool.end();
+			//  pool.end();
 			}
 			else
 			{
@@ -650,7 +650,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  );
 				  
 			  })
-			  pool.end();
+		//	  pool.end();
 		   }
 		   else
 		   {
@@ -735,7 +735,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				
 			//  });
 			  })
-			  pool.end();
+		//	  pool.end();
 	} else{
 		sendTextMessage(sender,responseText);
 	}
