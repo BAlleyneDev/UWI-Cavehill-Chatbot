@@ -51,6 +51,7 @@ module.exports = function(callback, userId){
 												user.email
 											]);
 									}
+									console.log(user.email);
                                     console.log("SUCCESSFULLY PASSED QUERY")
 								}
                                 console.log(user);
