@@ -65,6 +65,7 @@ const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 });
 const sessionIds = new Map();
 const usersMap = new Map();
+const  pool = new pg.Pool(config.PG_CONFIG);
 
 // Index route
 app.get('/', function (req, res) {
@@ -266,7 +267,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				 if (building =="CHADM1")
 				     building = 'Admin'; 
 
-				 let pool = new pg.Pool(config.PG_CONFIG);
+			//	 let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -327,7 +328,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  && parameters['lecturer']!='') ? parameters['lecturer']:'';
                
 
-			  let pool = new pg.Pool(config.PG_CONFIG);
+			//  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -380,7 +381,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  console.log('COURSENAME'+courseName);
 			  console.log('SEMESTER:'+semester);
 
-			  let pool = new pg.Pool(config.PG_CONFIG);
+		//	  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -452,7 +453,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				let courseName = (isDefined(parameters['course-names']) 
 			  && parameters['course-names']!='') ? parameters['course-names']:'';
 
-			  let pool = new pg.Pool(config.PG_CONFIG);
+		//	  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -617,7 +618,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  }
 
               
-			  let pool = new pg.Pool(config.PG_CONFIG);
+		//	  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err,client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -699,7 +700,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  semb="2"
 			  }
 
-			  let pool = new pg.Pool(config.PG_CONFIG);
+		//	  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -747,11 +748,9 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 		break;
 
 		case "faq-ques":
-		console.log('BEFORE IF');
-		console.log('Context NAME: '+contexts[0].name);
 		if(isDefined(contexts[0]) && contexts[0].name == 'answer-req' && contexts[0].parameters)
 		{
-			console.log('After IF');
+			
               let question = (isDefined(contexts[0].parameters['question-words']) 
 			  && contexts[0].parameters['question-words']!='') ? contexts[0].parameters['question-words']:'';
               
