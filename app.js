@@ -65,7 +65,6 @@ const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 });
 const sessionIds = new Map();
 const usersMap = new Map();
-let pool = new pg.Pool(config.PG_CONFIG);
 
 // Index route
 app.get('/', function (req, res) {
@@ -267,7 +266,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				 if (building =="CHADM1")
 				     building = 'Admin'; 
 
-			//	 let pool = new pg.Pool(config.PG_CONFIG);
+				 let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -313,7 +312,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                     
 			//  });
 			  })
-			//  pool.end();
+			  pool.end();
 		     }
 			 else
 			 {
@@ -328,7 +327,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  && parameters['lecturer']!='') ? parameters['lecturer']:'';
                
 
-			//  let pool = new pg.Pool(config.PG_CONFIG);
+			  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -361,7 +360,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                     
 			//  });
 			  })
-			//  pool.end();
+			  pool.end();
 		   }
 		   else
 		   {
@@ -381,7 +380,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  console.log('COURSENAME'+courseName);
 			  console.log('SEMESTER:'+semester);
 
-		//	  let pool = new pg.Pool(config.PG_CONFIG);
+			  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -439,7 +438,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
                     
 			//  });
 			  })
-			//  pool.end();
+			  pool.end();
 		   }
 		   else
 		   {
@@ -453,7 +452,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				let courseName = (isDefined(parameters['course-names']) 
 			  && parameters['course-names']!='') ? parameters['course-names']:'';
 
-		//	  let pool = new pg.Pool(config.PG_CONFIG);
+			  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -488,7 +487,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  }
 				  );
 			  })
-			//  pool.end();
+			  pool.end();
 			}
 			else
 			{
@@ -618,7 +617,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  }
 
               
-		//	  let pool = new pg.Pool(config.PG_CONFIG);
+			  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err,client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -650,7 +649,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  );
 				  
 			  })
-		//	  pool.end();
+			  pool.end();
 		   }
 		   else
 		   {
@@ -700,7 +699,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  semb="2"
 			  }
 
-		//	  let pool = new pg.Pool(config.PG_CONFIG);
+			  let pool = new pg.Pool(config.PG_CONFIG);
 			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
@@ -735,7 +734,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				
 			//  });
 			  })
-		//	  pool.end();
+			  pool.end();
 	} else{
 		sendTextMessage(sender,responseText);
 	}
