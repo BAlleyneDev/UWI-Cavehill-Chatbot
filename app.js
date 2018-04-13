@@ -213,7 +213,7 @@ function handleEcho(messageId, appId, metadata) {
  
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	console.log("Checking action");
-	console.log(sender);
+	
 	switch (action) {
 		/*case "getBuildingLocation":
 		   console.log("OUT");
@@ -321,7 +321,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	         }
 		break;
    
-        case "lecturer-courses":
+		case "lecturer-courses":
+		console.log("SENDERiD:"+sender);
 		   if(!isDefined(contexts[0] && contexts[0].parameters))
 		   {
                let name = (isDefined(parameters['lecturer']) 
