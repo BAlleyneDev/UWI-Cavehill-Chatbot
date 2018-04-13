@@ -1480,8 +1480,7 @@ function sendEmail(subject, content, userID){
        const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey('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');
 const msg = {
-  to: config.EMAIL_TO,
-  cc: user.email,
+  to: [config.EMAIL_TO,user.email],
   from: config.EMAIL_FROM,
   subject: subject,
   text: content,
