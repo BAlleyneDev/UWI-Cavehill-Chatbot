@@ -1467,13 +1467,13 @@ function verifyRequestSignature(req, res, buf) {
 
 function sendEmail(subject, content, userID){
 
-	setSessionAndUser(userId);
-	let user = usersMap.get(userId);
+	setSessionAndUser(userID);
+	let user = usersMap.get(userID);
 
     console.log("USER MAP INFO "+user);
 	if(user == undefined)
 	{
-		setSessionAndUser(userId);
+		setSessionAndUser(userID);
 	}
 
 	console.log('Reached the mail function');
