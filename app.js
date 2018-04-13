@@ -1262,7 +1262,7 @@ function greetUserText(userId) {
 	{
 		setSessionAndUser(userId);
 	}
-    sendTextMessage(userId, "Hello " + user.email + ' :). Welcome to the UWI Cavehill Bot. I can answer questions such as:\n What time does CMP Building close?\n How do I log into elearning?\n' 
+    sendTextMessage(userId, "Hello " + user.last_name + ' :). Welcome to the UWI Cavehill Bot. I can answer questions such as:\n What time does CMP Building close?\n How do I log into elearning?\n' 
 				+' What can I help you with?');
 	}
 
