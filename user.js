@@ -17,7 +17,7 @@ module.exports = function(callback, userId){
 		if (!error && response.statusCode == 200) {
 
 			var user = JSON.parse(body);
-            console.log('USERObject'+user);
+            console.log('USERObject'+user.email);
 			if (user.first_name) {
 
                     console.log("USER FIRST NAME OBTAINED");
