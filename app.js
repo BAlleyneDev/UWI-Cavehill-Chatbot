@@ -765,7 +765,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  if(question != '')
 			  {
 				  console.log('Pass to question if');
-				  let emailContent = 'A user just sent- '+question + " " + questionbody;
+				  let emailContent = 'The user '+email+' sent in the question:\n'+question + " " + questionbody;
 				  sendEmail('New question',emailContent, email);
 			  }
 		}
