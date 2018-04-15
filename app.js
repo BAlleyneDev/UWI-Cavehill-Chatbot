@@ -758,12 +758,15 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 			  let questionbody = (isDefined(contexts[0].parameters['question-body'])
 			  && contexts[0].parameters['question-body']!='') ? contexts[0].parameters['question-body']:'';
 
+			  let email = (isDefined(contexts[0].parameters['email'])
+			  && contexts[0].parameters['email']!='') ? contexts[0].parameters['email']:'';
+
 
 			  if(question != '')
 			  {
 				  console.log('Pass to question if');
 				  let emailContent = 'A user just sent- '+question + " " + questionbody;
-				  sendEmail('New question',emailContent, sender);
+				  sendEmail('New question',emailContent, email);
 			  }
 		}
 		sendTextMessage(sender,responseText);
@@ -1465,23 +1468,16 @@ function verifyRequestSignature(req, res, buf) {
 	}
 }
 
-function sendEmail(subject, content, userID){
+function sendEmail(subject, content, email){
 
-	setSessionAndUser(userID);
-	let user = usersMap.get(userID);
-
-    console.log("USER MAP INFO "+user);
-	if(user == undefined)
-	{
-		setSessionAndUser(userID);
-	}
-    console.log('USER EMAIL:'+user.email);
+	
+    console.log('USER EMAIL:'+email);
 	console.log('Reached the mail function');
        const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey('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');
 const msg = {
   to: config.EMAIL_TO,
-  bcc: user.email,
+  cc: email,
   from: config.EMAIL_FROM,
   subject: subject,
   text: content,
