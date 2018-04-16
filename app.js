@@ -767,7 +767,7 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				  console.log('Pass to question if');
 				  let emailContent = 'The user '+email+' sent in the question:\n'+question + " " + questionbody;
 				  sendEmail('New question',emailContent, email);
-			  }
+			  } 
 		}
 		sendTextMessage(sender,responseText);
 		break;
