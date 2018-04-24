@@ -60,22 +60,23 @@ app.use(bodyParser.json())
 
 
 
-var DB;  
-(function() {
-    var instance;
 
-    DB = function DB() {
-        if (instance) {
-            return instance;
-        }
 
-		instance = this;
-		
-		this.pool = new pg.Pool(config.PG_CONFIG);
+function DB() {  
+    // do we have an existing instance?
+    if (typeof User.instance === 'object') {
+        return User.instance;
+    }
 
-        return instance;
-    };
-}());
+    // proceed as normal
+	this.pool = new pg.Pool(config.PG_CONFIG);
+
+    // cache
+    User.instance = this;
+
+    // implicit return
+    // return this;
+}
 
 
 
@@ -290,8 +291,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				 if (building =="CHADM1")
 				     building = 'Admin'; 
 
-				 
-				  DB.connect(function(err, client, done){
+				  var db = DB();
+				  db.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
 				  }
