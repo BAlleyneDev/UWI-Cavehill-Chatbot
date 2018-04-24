@@ -59,6 +59,29 @@ app.use(bodyParser.json())
 
 
 
+
+var DB;  
+(function() {
+    var instance;
+
+    DB = function DB() {
+        if (instance) {
+            return instance;
+        }
+
+		instance = this;
+		
+		this.pool = new pg.Pool(config.PG_CONFIG);
+
+        return instance;
+    };
+}());
+
+
+
+
+
+
 const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 	language: "en",
 	requestSource: "fb"
@@ -267,8 +290,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				 if (building =="CHADM1")
 				     building = 'Admin'; 
 
-				 let pool = new pg.Pool(config.PG_CONFIG);
-			  pool.connect(function(err, client, done){
+				 
+				  DB.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
 				  }
