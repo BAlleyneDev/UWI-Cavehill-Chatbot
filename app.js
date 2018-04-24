@@ -63,7 +63,8 @@ app.use(bodyParser.json())
 
 
 function DB() {  
-    // do we have an existing instance?
+	// do we have an existing instance?
+	var pool;
     if (typeof DB.instance === 'object') {
         return DB.instance;
     }
