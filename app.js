@@ -59,31 +59,6 @@ app.use(bodyParser.json())
 
 
 
-
-
-
-function DB() {  
-	// do we have an existing instance?
-	var pool;
-    if (typeof DB.instance === 'object') {
-        return DB.instance;
-    }
-
-    // proceed as normal
-	this.pool = new pg.Pool(config.PG_CONFIG);
-
-    // cache
-    User.instance = this;
-
-    // implicit return
-    // return this;
-}
-
-
-
-
-
-
 const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
 	language: "en",
 	requestSource: "fb"
@@ -292,8 +267,8 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 				 if (building =="CHADM1")
 				     building = 'Admin'; 
 
-				  var db = DB();
-				  db.connect(function(err, client, done){
+				 let pool = new pg.Pool(config.PG_CONFIG);
+			  pool.connect(function(err, client, done){
 				  if (err){
 					  return console.error('Error acquiring client');
 				  }
