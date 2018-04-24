@@ -64,8 +64,8 @@ app.use(bodyParser.json())
 
 function DB() {  
     // do we have an existing instance?
-    if (typeof User.instance === 'object') {
-        return User.instance;
+    if (typeof DB.instance === 'object') {
+        return DB.instance;
     }
 
     // proceed as normal
