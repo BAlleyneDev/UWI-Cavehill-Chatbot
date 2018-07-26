@@ -321,6 +321,30 @@ function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	         }
 		break;
    
+		case "getQuote":
+
+		let country = (isDefined(parameters['countries']) 
+		&& parameters['countries']!='') ? parameters['countries']:'';
+
+		let number = (isDefined(parameters['number']) 
+		&& parameters['number']!='') ? parameters['number']:'';
+
+		let output;
+		if (country == "Canada")
+	   {
+		  output = amount*1.10;
+	   }
+	   else
+	   {
+		 output = amount*1.25;
+	   }
+
+       let reply ="The cost to send"+amount+"USD is"+output;
+
+	   sendTextMessage(sender, reply);
+		break;
+
+
 		case "lecturer-courses":
 		console.log("SENDERiD:"+sender);
 		   if(!isDefined(contexts[0] && contexts[0].parameters))
