@@ -1498,7 +1498,7 @@ function sendEmail(subject, content, email){
     console.log('USER EMAIL:'+email);
 	console.log('Reached the mail function');
        const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('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');
+sgMail.setApiKey(<APIKEY>);
 const msg = {
   to: config.EMAIL_TO,
   cc: email,
